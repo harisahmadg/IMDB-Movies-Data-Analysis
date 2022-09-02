@@ -13,6 +13,16 @@ Convert the .tsv files into .csv files. Data exploration followed by data cleans
 
 3. **Data Visualization** -> DataVisualization.ipynb
 
+Use various tools to visualize and plot data in a graphical representation. Use of charts, graphs and maps. Find outliers and hidden patterns in the data. Essential for large datasets.
+
+4. **Data Analysis and Interpretation** -> StatisticalAnalysis.ipynb
+
+Visualize data but through statistical anaylsis. Find mode, entropy, median, mean, etc for various feature types. For example, we can determine the average births per year since 1900-Present for movie stars.
+
+4. **Data Mining** -> Model.ipynb
+
+Choose appropriate mining techniques and implement ML algorithms to solve a problem. Train model on clean data obtained from previous steps. Compare accuracy of model and fine tune hyper parameters.
+
 ## Datasets
 Analyzed 5 datasets from https://www.imdb.com/interfaces/ with the following feature informations:
 
@@ -55,8 +65,9 @@ Analyzed 5 datasets from https://www.imdb.com/interfaces/ with the following fea
     - primaryProfession (array of strings)– the top-3 professions of the person
     - knownForTitles (array of tconsts) – titles the person is known for
 
-
-
-
 ## Some questions
-## Navigation Recommendation
+1. What genres are people most interested in?
+2. What makes a good title (average rating >=8)?
+3. Are senior actors more popular than junior actors?
+4. Are senior actors better than junior actors?
+5. What makes a title popular (We can use numVotes to determine this)?
