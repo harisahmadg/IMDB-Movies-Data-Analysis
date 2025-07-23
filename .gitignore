@@ -1,5 +1,40 @@
+# Environment and virtual environment
 .env
 venv/
-Notes.md
-dataset/originalDataset
-dataset/mainDataset
+
+# Large datasets - exclude from git, keep only samples
+data/raw/
+data/chunks/
+
+# Keep sample data for quick analysis
+!data/processed/
+
+# Old dataset directories (if any remain)
+dataset/
+notes.md
+DATA_SUMMARY.md
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

@@ -1,27 +1,102 @@
-# Analysis of IMDB Movies Dataset
-**Dataset:** https://datasets.imdbws.com/ \
-**Goal:** Uncover hidden patterns, trends and anomalies in the movie dataset in hope to solve some interesting questions
+# IMDB Movies Data Analysis
+
+A comprehensive analysis of IMDB movie datasets including data visualization, statistical analysis, and machine learning models.
+
+## Project Structure
+
+```
+├── data/
+│   ├── raw/              # Original .tsv.gz files from IMDB
+│   ├── processed/        # Sample datasets for quick analysis
+│   └── chunks/           # Large datasets split into manageable chunks
+├── src/
+│   ├── data_extractor.py # Extract and process raw data files
+│   └── data_loader.py    # Load processed data for analysis
+├── notebooks/
+│   ├── DataPreparation.ipynb
+│   ├── DataVisualization.ipynb
+│   ├── StatisticalAnalysis.ipynb
+│   └── Model.ipynb
+├── results/              # Analysis outputs and model results
+├── docs/                 # Documentation
+├── requirements.txt      # Python dependencies
+└── README.md
+```
+
+## Getting Started
+
+### 1. Setup Virtual Environment
+
+```bash
+# Install python3-venv if not available
+sudo apt install python3.12-venv
+
+# Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### 2. Data Extraction
+
+The project includes large IMDB datasets (.tsv.gz files). To extract and process them:
+
+```bash
+# Extract all datasets into manageable chunks
+python src/data_extractor.py
+```
+
+This will:
+- Extract compressed .tsv.gz files
+- Split large datasets into 100k row chunks
+- Create sample files for quick analysis
+- Clean and standardize data formats
+
+### 3. Loading Data for Analysis
+
+```python
+from src.data_loader import IMDBDataLoader, create_ml_dataset
+
+# Initialize loader
+loader = IMDBDataLoader()
+
+# Load a sample dataset
+ratings_sample = loader.load_sample('title.ratings')
+
+# Load full dataset with chunk limit
+ratings_full = loader.load_chunks('title.ratings', max_chunks=5)
+
+# Create ML-ready dataset
+ml_data = create_ml_dataset(sample_size=50000)
+```
 
 ## Data Mining Process
-1. **Obtain Relevant Data** -> Contained in the dataset folder
 
-Use 5 different datasets in the form of .tsv files converted into .csv format. Majority of the datasets contain a primary key feature called 'tconst' which is a unique identifier for the movie title. This facilitates merge and join together operations to enhance the # of features thereby allowing me to obtain more relevant data
+1. **Data Extraction** -> `src/data_extractor.py`
+   - Extract compressed .tsv.gz files (multi-GB datasets)
+   - Split into manageable chunks for memory efficiency
+   - Clean and standardize data formats
 
-2. **Data Preparation** -> DataPreparation.ipynb
+2. **Data Preparation** -> `notebooks/DataPreparation.ipynb`
+   - Convert .tsv files to .csv format
+   - Data cleansing and null value handling
+   - Dataset integration and feature engineering
 
-Convert the .tsv files into .csv files. Data exploration followed by data cleansing to fix incorrect, incomplete or duplicate data in the dataset. The next step is to integrate any datasets that have similar features to create unified sets of information for analytical uses. Following that, remove all instances which are discovered by the cleansing step.
+3. **Data Visualization** -> `notebooks/DataVisualization.ipynb`
+   - Rating distributions and popularity analysis
+   - Genre trends and regional statistics
+   - Runtime and production trend analysis
 
-3. **Data Visualization** -> DataVisualization.ipynb
+4. **Statistical Analysis** -> `notebooks/StatisticalAnalysis.ipynb`
+   - Feature-type specific analysis (nominal, ordinal, interval, ratio)
+   - Statistical measures and distribution analysis
 
-Use various tools to visualize and plot data in a graphical representation. Use of charts, graphs and maps. Find outliers and hidden patterns in the data. Essential for large datasets.
-
-4. **Data Analysis and Interpretation** -> StatisticalAnalysis.ipynb
-
-Visualize data but through statistical anaylsis. Find mode, entropy, median, mean, etc for various feature types. For example, we can determine the average births per year since 1900-Present for movie stars.
-
-4. **Data Mining** -> Model.ipynb
-
-Choose appropriate mining techniques and implement ML algorithms to solve a problem. Train model on clean data obtained from previous steps. Compare accuracy of model and fine tune hyper parameters.
+5. **Machine Learning** -> `notebooks/Model.ipynb`
+   - PCA for dimensionality reduction
+   - Decision tree classification
+   - Model evaluation and visualization
 
 ## Datasets
 Analyzed 5 datasets from https://www.imdb.com/interfaces/ with the following feature informations:
